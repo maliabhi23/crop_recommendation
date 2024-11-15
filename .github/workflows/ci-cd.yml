@@ -1,0 +1,46 @@
+name: Flask CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow when changes are pushed to 'main' branch
+  pull_request:
+    branches:
+      - main  # Trigger the workflow on pull requests to 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # The runner environment (Ubuntu in this case)
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Check out the code from the repository
+
+      - name: Set up Python
+        uses: actions/setup-python@v2  # Set up Python environment
+        with:
+          python-version: '3.8'  # You can set this to any version you need (must match your project requirements)
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Install dependencies listed in the requirements.txt file
+
+      - name: Run tests (optional)
+        run: |
+          # You can add commands here to run your tests, for example:
+          # pytest tests/
+          python -m unittest discover  # If you're using unittest for testing
+
+      - name: Run Flask app (for development/testing purposes)
+        run: |
+          nohup python app.py &  # Run the Flask app in the background for testing
+          sleep 10  # Allow the app to start
+          # You can add curl or other commands here to test the running app, for example:
+          curl http://localhost:5000  # Testing if the app is running
+
+      - name: Deploy (optional)
+        run: |
+          # Add deployment commands here (e.g., if deploying to Heroku, AWS, or another platform)
+          echo "Deploying the app..."
+

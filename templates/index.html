@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Form container */
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 20px;
+                margin-top: 15px;
+            }
+
+            input[type="text"], input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter crop parameters for prediction</h1>
+    <div class="form-container">
+        <form action="/predict" method="POST">
+            <label for="nitrogen">Nitrogen:</label>
+            <input type="text" id="nitrogen" name="nitrogen" required><br>
+
+            <label for="phosphorus">Phosphorus:</label>
+            <input type="text" id="phosphorus" name="phosphorus" required><br>
+
+            <label for="potassium">Potassium:</label>
+            <input type="text" id="potassium" name="potassium" required><br>
+
+            <label for="temperature">Temperature:</label>
+            <input type="text" id="temperature" name="temperature" required><br>
+
+            <label for="humidity">Humidity:</label>
+            <input type="text" id="humidity" name="humidity" required><br>
+
+            <label for="ph_value">pH Value:</label>
+            <input type="text" id="ph_value" name="ph_value" required><br>
+
+            <label for="rainfall">Rainfall:</label>
+            <input type="text" id="rainfall" name="rainfall" required><br>
+
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+</body>
+</html>
